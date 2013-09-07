@@ -2,6 +2,26 @@ function tab_group(_args) {
 	var win = Titanium.UI.createWindow({
 		title:_args.title
 	});
+
+	// add Up button to actionBar
+	win.addEventListener('open',function(e){
+		if (Ti.Platform.osname==='android'){
+			var activity=win.getActivity();
+			if (activity){
+				var actionBar=activity.actionBar;
+				if (actionBar){
+					actionBar.displayHomeAsUp=true;
+					actionBar.onHomeIconItemSelected=function(){
+						win.close();
+					}
+				}else{
+					console.log('=======> Couldn\'t get ActionBar');
+				}
+			}else{
+					console.log('=======> Couldn\'t get Activity');
+			}
+		}
+	})
 	
 	// get tab group object
 	var tabGroup = _args.tabGroup;

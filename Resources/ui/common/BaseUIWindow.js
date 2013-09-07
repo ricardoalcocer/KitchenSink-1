@@ -3,7 +3,7 @@ function BaseUIWindow(title) {
 		title:title,
 		backgroundColor:'white'
 	});
-	
+
 	var isMobileWeb = Titanium.Platform.osname == 'mobileweb';
 	
 	// create table view data object

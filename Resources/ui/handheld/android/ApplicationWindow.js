@@ -3,7 +3,7 @@ function ApplicationWindow(title) {
 		title:title,
 		backgroundColor:'white'
 	});
-	
+
 	var button = Ti.UI.createButton({
 		height:44,
 		width:200,

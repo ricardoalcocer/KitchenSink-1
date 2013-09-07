@@ -128,6 +128,22 @@ function ApplicationTabGroup() {
 			setTimeout(function() {
 				messageWin.close({opacity:0,duration:500});
 			},1000);
+
+			if (Ti.Platform.osname==='android'){
+				var activity=self.getActivity();
+				if (activity){
+					var actionBar=activity.actionBar;
+					if (actionBar){
+						actionBar.title='Titanium KitchenSink';
+						e.title='Titanium KitchenSink';
+					}else{
+						console.log('=======> Couldn\'t get ActionBar');
+					}
+				}else{
+						console.log('=======> Couldn\'t get Activity');
+				}
+			}
+		
 		}
 	});
 	

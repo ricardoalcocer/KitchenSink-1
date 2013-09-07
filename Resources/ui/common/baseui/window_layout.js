@@ -5,6 +5,26 @@ function win_layout(_args) {
 	win.backgroundColor = '#13386c';
 	win.barColor = '#13386c';
 	
+	// add Up button to actionBar
+	win.addEventListener('open',function(e){
+		if (Ti.Platform.osname==='android'){
+			var activity=win.getActivity();
+			if (activity){
+				var actionBar=activity.actionBar;
+				if (actionBar){
+					actionBar.displayHomeAsUp=true;
+					actionBar.onHomeIconItemSelected=function(){
+						win.close();
+					}
+				}else{
+					console.log('=======> Couldn\'t get ActionBar');
+				}
+			}else{
+					console.log('=======> Couldn\'t get Activity');
+			}
+		}
+	})
+
 	//
 	//  CREATE FIELD ONE
 	//
